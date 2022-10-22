@@ -1,27 +1,49 @@
-// import { useState, useEffect } from 'react';
-// import { getTrendingMovie } from '../../services/movies.Api';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { getTrendingMovie } from '../../services/movies.Api';
+import { MovieGallery } from '../../components/MovieGallery/MovieGallery';
+import { Status } from '../../utils/Status';
+import { Loader } from '../../components/Loader/Loader';
 
-// export const Home = () => {
-//   // const [page, setPage] = useState(1);
-//   // const [query, setQuery] = useState('');
-//   const [movies, setMovies] = useState([]);
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
+export const Home = () => {
+  // const [page, setPage] = useState(1);
+  // const [query, setQuery] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [status, setStatus] = useState(Status.IDLE);
+  const [error, setError] = useState(null);
 
-//   useEffect(() => {
-//     async function searchMovies() {
-//       try {
-//         const fetchMovies = await getTrendingMovie();
+  const location = useLocation();
 
-//         setMovies(prevState => [fetchMovies]);
-//       } catch (error) {
-//         setError(error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     }
-//     searchMovies();
-//   }, []);
+  useEffect(() => {
+    async function searchMovies() {
+      try {
+        const fetchMovies = await getTrendingMovie();
 
-//   return;
-// };
+        setMovies(fetchMovies.results);
+        setStatus(Status.RESOLVED);
+      } catch (error) {
+        setError(error);
+        setStatus(Status.REJECTED);
+      } finally {
+      }
+    }
+    searchMovies();
+  }, []);
+
+  return (
+    <>
+      {status === Status.IDLE && <></>}
+      {status === Status.PENDING && <Loader />}
+      {status === Status.REJECTED && (
+        <div style={{ color: 'red' }}>{error}</div>
+      )}
+      {status === Status.RESOLVED && movies && (
+        <MovieGallery
+          movies={movies}
+          title={'Trending today:'}
+          locationState={location}
+        />
+      )}
+    </>
+  );
+};

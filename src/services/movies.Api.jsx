@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3';
+export const BASE_URL_IMG = 'https://image.tmdb.org/t/p/w300/';
+const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'c17bf6e924f8c464ad14541e0a1a8fcf';
 
 export const getTrendingMovie = async () => {
