@@ -3,17 +3,23 @@ import { BASE_URL_IMG } from '../../services/movies.Api';
 import fallback from '../../images/fallback.jpg';
 import { Link } from 'react-router-dom';
 
-export const MovieGalleryItem = ({ id, title, poster_path }, locationState) => {
+export const MovieGalleryItem = (
+  { movie: { id, poster_path, title, overview } },
+  locationState
+) => {
   return (
-    <Link to={`${BASE_URL_IMG}movies/${id}`} state={{ from: locationState }}>
-      <li data-id={id}>
+    <li data-id={id}>
+      <Link to={`/movies/${id}`} state={{ from: locationState }}>
         <img
-          src={poster_path ? `${BASE_URL_IMG}${poster_path}` : fallback}
+          src={poster_path ? `${BASE_URL_IMG}/${poster_path}` : fallback}
           alt={title}
+          overview={overview}
         />
-
-        <p>{title}</p>
-      </li>
-    </Link>
+        <div>
+          <h3>{title}</h3>
+          <p>{`${overview.slice(0, 50)}...`}</p>
+        </div>
+      </Link>
+    </li>
   );
 };

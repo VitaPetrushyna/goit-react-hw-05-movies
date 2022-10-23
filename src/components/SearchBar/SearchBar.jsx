@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import { ReactComponent as SearchIcon } from '../../images/search.svg';
+import {
+  SearchBarHeader,
+  SearchForm,
+  SearchFormButton,
+  SearchFormInput,
+} from './SerchBar.styled';
 // import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
 
-export default function Searchbar({ onSubmit }) {
+export function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
 
   const handleInputChange = event => {
@@ -25,22 +31,22 @@ export default function Searchbar({ onSubmit }) {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">
+    <SearchBarHeader>
+      <SearchForm onSubmit={handleSubmit}>
+        <SearchFormButton type="submit">
           <SearchIcon />
-        </button>
+        </SearchFormButton>
 
-        <input
+        <SearchFormInput
           name="query"
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
+          placeholder="Search movies"
           value={query}
           onChange={handleInputChange}
         />
-      </form>
-    </header>
+      </SearchForm>
+    </SearchBarHeader>
   );
 }
