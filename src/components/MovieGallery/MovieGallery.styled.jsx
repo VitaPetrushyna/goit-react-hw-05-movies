@@ -12,3 +12,12 @@ export const MoviesList = styled.ul`
   margin-left: auto;
   margin-right: auto;
 `;
+
+export const TitleHeader = styled.h2`
+  color: white;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(90deg, #070927, #3876fc);
+  margin: 20px auto;
+  height: 40px;
+`;

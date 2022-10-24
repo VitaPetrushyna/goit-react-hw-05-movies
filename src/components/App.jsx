@@ -3,13 +3,15 @@ import { Home } from '../pages/HomePage/HomePage';
 import { Movies } from '../pages/MoviesPage/MoviesPage';
 // import { MovieDetailsPage } from '../pages/MovieDetailsPage/MovieDetailsPage';
 import { AppBar } from './AppBar/AppBar';
+import { AppContainer } from './App.styled';
 // import { Cast } from './Cast/Cast';
 // import { Reviews } from './Reviews/Reviews';
 
 export function App() {
   return (
-    <div>
+    <AppContainer>
       <AppBar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Movies" element={<Movies />} />
@@ -19,6 +21,6 @@ export function App() {
         </Route> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </div>
+    </AppContainer>
   );
 }

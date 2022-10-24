@@ -1,10 +1,10 @@
 // import PropTypes from 'prop-types';
 import { MovieGalleryItem } from '../MovieGalleryItem/MovieGalleryItem';
-import { MoviesList } from './MovieGallery.styled';
+import { MoviesList, TitleHeader } from './MovieGallery.styled';
 
 export const MovieGallery = ({ movies, titleHeader, locationState }) => (
   <>
-    <h2>{titleHeader}</h2>
+    <TitleHeader>{titleHeader}</TitleHeader>
     <MoviesList>
       {movies.map(movie => (
         <MovieGalleryItem
