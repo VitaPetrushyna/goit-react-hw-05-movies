@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ReactComponent as SearchIcon } from '../../images/search.svg';
 import {
-  SearchBarHeader,
   SearchForm,
   SearchFormButton,
   SearchFormInput,
@@ -31,7 +30,7 @@ export function Searchbar({ onSubmit }) {
   };
 
   return (
-    <SearchBarHeader>
+    <>
       <SearchForm onSubmit={handleSubmit}>
         <SearchFormButton type="submit">
           <SearchIcon />
@@ -47,6 +46,6 @@ export function Searchbar({ onSubmit }) {
           onChange={handleInputChange}
         />
       </SearchForm>
-    </SearchBarHeader>
+    </>
   );
 }
