@@ -5,7 +5,8 @@ export const ButtonLoadMore = styled.button`
   margin-left: 600px;
   padding: 8px 16px;
   border-radius: 2px;
-  background-color: #49b94f;
+  background: linear-gradient(90deg, #070927, #3876fc);
+
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   display: inline-block;

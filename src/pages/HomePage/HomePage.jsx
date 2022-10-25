@@ -6,19 +6,18 @@ import { Status } from '../../utils/Status';
 import { Loader } from '../../components/Loader/Loader';
 import { BtnLoadMore } from '../../components/BtnLoadMore/BtnLoadMore';
 
-export const Home = () => {
+const Home = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(Status.IDLE);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const location = useLocation();
 
   useEffect(() => {
     async function trendingMovies() {
-      setStatus(Status.PENDING);
       try {
         const fetchMovies = await getTrendingMovie(page);
 
@@ -29,7 +28,7 @@ export const Home = () => {
         setError(error);
         setStatus(Status.REJECTED);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     }
     trendingMovies(page);
@@ -42,8 +41,8 @@ export const Home = () => {
   return (
     <>
       {status === Status.IDLE && <></>}
-      {/* {status === Status.PENDING && <Loader />} */}
-      {loading && <Loader />}
+      {status === Status.PENDING && <Loader />}
+      {/* {loading && <Loader />} */}
       {status === Status.REJECTED && (
         <div style={{ color: 'red' }}>{error}</div>
       )}
@@ -60,3 +59,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

@@ -8,7 +8,7 @@ import { Searchbar } from '../../components/SearchBar/SearchBar';
 import { BtnLoadMore } from '../../components/BtnLoadMore/BtnLoadMore';
 import toast, { Toaster } from 'react-hot-toast';
 
-export function Movies() {
+const Movies = () => {
   const [page, setPage] = useState(1);
   // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
@@ -27,7 +27,6 @@ export function Movies() {
       return;
     }
     async function searchMovies() {
-      setStatus(Status.PENDING);
       try {
         const fetchSearchMovies = await getSearchMovie(searchQuery, page);
 
@@ -83,4 +82,6 @@ export function Movies() {
       <Toaster position="top-left" />
     </div>
   );
-}
+};
+
+export default Movies;

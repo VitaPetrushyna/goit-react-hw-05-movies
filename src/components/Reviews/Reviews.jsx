@@ -24,7 +24,7 @@ export function Reviews() {
 
   return (
     <>
-      {reviews ? (
+      {reviews.length > 0 ? (
         <ul>
           {reviews.map(({ id, author, content }) => (
             <li key={id}>

@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { MovieGalleryItem } from '../MovieGalleryItem/MovieGalleryItem';
 import { MoviesList, TitleHeader } from './MovieGallery.styled';
 
@@ -17,3 +17,14 @@ export const MovieGallery = ({ movies, titleHeader, locationState }) => (
     </MoviesList>
   </>
 );
+
+MovieGallery.propTypes = {
+  titleHeader: PropTypes.string,
+  locationState: PropTypes.object.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
+};

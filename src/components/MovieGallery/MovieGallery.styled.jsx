@@ -19,5 +19,5 @@ export const TitleHeader = styled.h2`
   padding: 20px;
   background: linear-gradient(90deg, #070927, #3876fc);
   margin: 20px auto;
-  height: 40px;
+  height: 25px;
 `;

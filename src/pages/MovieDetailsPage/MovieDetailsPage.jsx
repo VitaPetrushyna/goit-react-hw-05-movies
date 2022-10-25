@@ -7,14 +7,14 @@ import { Loader } from '../../components/Loader/Loader';
 import toast, { Toaster } from 'react-hot-toast';
 import { StyledList } from './MovieDetailsPage.styled';
 
-export function MovieDetailsPage() {
+const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
   const [status, setStatus] = useState(Status.IDLE);
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  const backLinkHref = location?.state?.from ?? '/';
+  // const backLinkHref = location?.state?.from ?? '/';
 
   useEffect(() => {
     async function searchDetailsMovies() {
@@ -45,7 +45,7 @@ export function MovieDetailsPage() {
       )}
       {status === Status.RESOLVED && movie && (
         <>
-          <Link to={backLinkHref}>Go back</Link>
+          <Link to={'/'}>Go back</Link>
           <div>
             <MovieDetailsCard movie={movie} />
             <div>
@@ -73,4 +73,6 @@ export function MovieDetailsPage() {
       )}
     </div>
   );
-}
+};
+
+export default MovieDetailsPage;

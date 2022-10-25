@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { BASE_URL_IMG } from 'services/movies.Api';
 import fallback from '../../images/fallback.jpg';
 
@@ -32,4 +33,20 @@ export const MovieDetailsCard = ({
       ))}
     </>
   );
+};
+
+MovieDetailsCard.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    vote_average: PropTypes.number.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+      })
+    ),
+  }),
 };

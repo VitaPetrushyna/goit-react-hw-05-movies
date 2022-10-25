@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { ReactComponent as SearchIcon } from '../../images/search.svg';
 import {
   SearchForm,
@@ -49,3 +50,7 @@ export function Searchbar({ onSubmit }) {
     </>
   );
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

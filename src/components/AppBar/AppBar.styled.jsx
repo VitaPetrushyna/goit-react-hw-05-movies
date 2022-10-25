@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header`
   height: 50px;
 `;
 
-export const NavContainer = styled.nav`
+export const Nav = styled.nav`
   display: flex;
   gap: 40px;
   border-bottom: 3px solid rgb(7, 4, 53);
@@ -24,11 +24,11 @@ export const StyledLink = styled(NavLink)`
   color: black;
 
   &.active {
-    color: orange;
+    color: #3876fc;
   }
 
   :hover:not(.active),
-  :focus-visible:host(.active) {
+  :focus-visible:not(.active) {
     color: #3b3be3;
   }
 `;
