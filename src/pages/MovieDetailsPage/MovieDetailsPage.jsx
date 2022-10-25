@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { getDetailsMovie } from '../../services/movies.Api';
 import { MovieDetailsCard } from '../../components/MovieDetailsCard/MovieDetailsCard';
 import { Status } from '../../utils/Status';
@@ -11,8 +11,9 @@ export function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
   const [status, setStatus] = useState(Status.IDLE);
-  //   const location = useLocation();
   const [error, setError] = useState(null);
+
+  const location = useLocation();
 
   useEffect(() => {
     async function searchDetailsMovies() {
@@ -28,7 +29,6 @@ export function MovieDetailsPage() {
       } catch (error) {
         setError(error);
         setStatus(Status.REJECTED);
-      } finally {
       }
     }
     searchDetailsMovies(movieId);
@@ -43,17 +43,20 @@ export function MovieDetailsPage() {
       )}
       {status === Status.RESOLVED && movie && (
         <>
-          <MovieDetailsCard movie={movie} />
+          <Link to={location?.state?.from ?? '/'}>Go back</Link>
           <div>
-            <p>Additional information</p>
-            <StyledList to="reviews">Reviews</StyledList>
-            <StyledList to="cast">Cast</StyledList>
-          </div>
+            <MovieDetailsCard movie={movie} />
+            <div>
+              <p>Additional information</p>
+              <StyledList to="reviews">Reviews</StyledList>
+              <StyledList to="cast">Cast</StyledList>
+            </div>
 
-          <Suspense fallback="">
-            <Outlet />
-          </Suspense>
-          <Toaster position="top-left" />
+            <Suspense fallback="">
+              <Outlet />
+            </Suspense>
+            <Toaster position="top-left" />
+          </div>
         </>
       )}
     </div>
