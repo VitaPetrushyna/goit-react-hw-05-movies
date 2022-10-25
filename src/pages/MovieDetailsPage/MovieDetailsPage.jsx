@@ -14,9 +14,11 @@ export function MovieDetailsPage() {
   const [error, setError] = useState(null);
 
   const location = useLocation();
+  const backLinkHref = location?.state?.from ?? '/';
 
   useEffect(() => {
     async function searchDetailsMovies() {
+      setStatus(Status.PENDING);
       try {
         const fetchDetailsMovies = await getDetailsMovie(movieId);
 
@@ -43,13 +45,23 @@ export function MovieDetailsPage() {
       )}
       {status === Status.RESOLVED && movie && (
         <>
-          <Link to={location?.state?.from ?? '/'}>Go back</Link>
+          <Link to={backLinkHref}>Go back</Link>
           <div>
             <MovieDetailsCard movie={movie} />
             <div>
               <p>Additional information</p>
-              <StyledList to="reviews">Reviews</StyledList>
-              <StyledList to="cast">Cast</StyledList>
+              <StyledList
+                to="reviews"
+                state={{ from: location?.state?.from ?? '/' }}
+              >
+                Reviews
+              </StyledList>
+              <StyledList
+                to="cast"
+                state={{ from: location?.state?.from ?? '/' }}
+              >
+                Cast
+              </StyledList>
             </div>
 
             <Suspense fallback="">

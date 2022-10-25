@@ -18,6 +18,7 @@ export const Home = () => {
 
   useEffect(() => {
     async function trendingMovies() {
+      setStatus(Status.PENDING);
       try {
         const fetchMovies = await getTrendingMovie(page);
 
