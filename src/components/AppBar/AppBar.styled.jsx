@@ -23,6 +23,8 @@ export const Nav = styled.nav`
 export const StyledLink = styled(NavLink)`
   color: black;
 
+  font-size: 24px;
+
   &.active {
     color: #3876fc;
   }

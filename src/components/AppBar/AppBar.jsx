@@ -6,7 +6,9 @@ export const AppBar = () => {
     <>
       <HeaderContainer>
         <Nav>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/" end>
+            Home
+          </StyledLink>
           <StyledLink to="/movies">Movies</StyledLink>
         </Nav>
       </HeaderContainer>
