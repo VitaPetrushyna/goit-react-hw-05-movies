@@ -1,11 +1,18 @@
 import { useState, useEffect, Suspense } from 'react';
-import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { getDetailsMovie } from '../../services/movies.Api';
 import { MovieDetailsCard } from '../../components/MovieDetailsCard/MovieDetailsCard';
 import { Status } from '../../utils/Status';
 import { Loader } from '../../components/Loader/Loader';
 import toast, { Toaster } from 'react-hot-toast';
-import { StyledList } from './MovieDetailsPage.styled';
+import {
+  StyledList,
+  BackLink,
+  Additional,
+  AdditionalNav,
+  Reviews,
+  Cast,
+} from './MovieDetailsPage.styled';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -45,30 +52,37 @@ const MovieDetailsPage = () => {
       )}
       {status === Status.RESOLVED && movie && (
         <>
-          <Link to={'/'}>Go back</Link>
-          <div>
-            <MovieDetailsCard movie={movie} />
-            <div>
-              <p>Additional information</p>
-              <StyledList
-                to="reviews"
-                state={{ from: location?.state?.from ?? '/' }}
-              >
-                Reviews
-              </StyledList>
-              <StyledList
-                to="cast"
-                state={{ from: location?.state?.from ?? '/' }}
-              >
-                Cast
-              </StyledList>
-            </div>
+          <BackLink>
+            <StyledList to={'/'}>Go back</StyledList>
+          </BackLink>
 
-            <Suspense fallback="">
-              <Outlet />
-            </Suspense>
-            <Toaster position="top-left" />
-          </div>
+          <MovieDetailsCard movie={movie} />
+          <Additional>
+            <p>Additional information</p>
+            <AdditionalNav>
+              <Reviews>
+                <StyledList
+                  to="reviews"
+                  state={{ from: location?.state?.from ?? '/' }}
+                >
+                  Reviews
+                </StyledList>
+              </Reviews>
+              <Cast>
+                <StyledList
+                  to="cast"
+                  state={{ from: location?.state?.from ?? '/' }}
+                >
+                  Cast
+                </StyledList>
+              </Cast>
+            </AdditionalNav>
+          </Additional>
+
+          <Suspense fallback="">
+            <Outlet />
+          </Suspense>
+          <Toaster position="top-left" />
         </>
       )}
     </div>

@@ -26,10 +26,11 @@ export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 600px;
-  background-color: #fff;
+  max-width: 100%;
+  background-color: #efefef;
   border-radius: 3px;
   overflow: hidden;
+  margin-top: 20px;
 `;
 
 export const SearchFormButton = styled.button`
@@ -72,6 +73,7 @@ export const SearchFormInput = styled.input`
   outline: none;
   padding-left: 4px;
   padding-right: 4px;
+  background-color: #efefef;
 
   ::placeholder {
     font: inherit;
