@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const ButtonLoadMore = styled.button`
   margin-top: 15px;
-  margin-left: 600px;
+  margin-left: 400px;
+
   padding: 8px 16px;
   border-radius: 2px;
   background: linear-gradient(90deg, #070927, #3876fc);

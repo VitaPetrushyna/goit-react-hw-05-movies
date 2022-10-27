@@ -30,7 +30,7 @@ export const StyledList = styled(NavLink)`
 
   :hover:not(.active),
   :focus-visible:host(.active) {
-    color: #3876fc;
+    color: #88888f;
   }
 `;
 export const Additional = styled.div`

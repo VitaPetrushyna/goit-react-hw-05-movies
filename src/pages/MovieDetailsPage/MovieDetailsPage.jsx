@@ -51,7 +51,6 @@ const MovieDetailsPage = () => {
       {status === Status.RESOLVED && movie && (
         <>
           <BackLink to={'/'}>Go back</BackLink>
-
           <MovieDetailsCard movie={movie} />
           <Additional>
             <p>Additional information</p>

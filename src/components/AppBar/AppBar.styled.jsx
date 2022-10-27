@@ -32,6 +32,6 @@ export const StyledLink = styled(NavLink)`
 
   :hover:not(.active),
   :focus-visible:not(.active) {
-    color: #3b3be3;
+    color: #88888f;
   }
 `;
