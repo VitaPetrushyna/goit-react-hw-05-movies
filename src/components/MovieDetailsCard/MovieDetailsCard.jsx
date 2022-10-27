@@ -5,6 +5,7 @@ import {
   MovieDetails,
   MovieDetailsImage,
   MovieDetailsText,
+  MovieDetailsFoto,
 } from './MovieDetailsCard.styled';
 
 export const MovieDetailsCard = ({
@@ -17,32 +18,30 @@ export const MovieDetailsCard = ({
     vote_average,
   },
 }) => {
-  const userRating = vote_average * 10;
+  const userRating = (vote_average * 10).toFixed(2);
   const yearData = release_date.slice(0, 4);
 
   return (
-    <>
-      <MovieDetails>
-        <MovieDetailsImage>
-          <img
-            src={poster_path ? `${BASE_URL_IMG}/${poster_path}` : fallback}
-            alt={title}
-          />
-        </MovieDetailsImage>
-        <MovieDetailsText>
-          <h3>
-            {title} ({yearData})
-          </h3>
-          <p>User Score: {userRating}%</p>
-          <h4>Overview</h4>
-          <p>{overview}</p>
-          <h4>Genres</h4>
-          {genres.map(({ id, name }) => (
-            <span key={id}>{name} </span>
-          ))}
-        </MovieDetailsText>
-      </MovieDetails>
-    </>
+    <MovieDetails>
+      <MovieDetailsImage>
+        <MovieDetailsFoto
+          src={poster_path ? `${BASE_URL_IMG}/${poster_path}` : fallback}
+          alt={title}
+        />
+      </MovieDetailsImage>
+      <MovieDetailsText>
+        <h3>
+          {title} ({yearData})
+        </h3>
+        <p>User Score: {userRating}%</p>
+        <h4>Overview</h4>
+        <p>{overview}</p>
+        <h4>Genres</h4>
+        {genres.map(({ id, name }) => (
+          <span key={id}>{name} </span>
+        ))}
+      </MovieDetailsText>
+    </MovieDetails>
   );
 };
 

@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const BackLink = styled.span`
+export const BackLink = styled.button`
   background-color: #efefef;
-  padding-left: 5px;
-  margin: 10px 0;
-  display: flex;
+  padding: 5px;
+  margin-top: 20px;
+  width: 200px;
+  border: solid 1px gray;
 `;
 
 export const StyledList = styled(NavLink)`
   color: black;
 
   &.active {
-    color: orange;
+    color: #3876fc;
   }
 
   :hover:not(.active),
@@ -28,14 +29,16 @@ export const Additional = styled.div`
 export const AdditionalNav = styled.div`
   display: flex;
 `;
-export const Reviews = styled.div`
+export const Reviews = styled.button`
   background-color: #efefef;
-  width: 100px;
-  padding: 3px;
+  width: 200px;
+  padding: 5px;
   margin-right: 5px;
+  border: solid 1px gray;
 `;
-export const Cast = styled.div`
+export const Cast = styled.button`
   background-color: #efefef;
-  width: 100px;
-  padding: 3px;
+  width: 200px;
+  padding: 5px;
+  border: solid 1px gray;
 `;

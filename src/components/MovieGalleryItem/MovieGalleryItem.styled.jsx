@@ -32,7 +32,7 @@ export const InfoMovie = styled.div`
 export const CardMovie = styled.li`
   display: flex;
   align-items: flex-end;
-  min-height: 400px;
+  min-height: 300px;
   border-radius: 15px;
   padding: 15px;
   background: white;

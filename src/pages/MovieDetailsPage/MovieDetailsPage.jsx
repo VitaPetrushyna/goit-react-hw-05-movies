@@ -52,7 +52,7 @@ const MovieDetailsPage = () => {
       )}
       {status === Status.RESOLVED && movie && (
         <>
-          <BackLink>
+          <BackLink type="button">
             <StyledList to={'/'}>Go back</StyledList>
           </BackLink>
 
@@ -60,7 +60,7 @@ const MovieDetailsPage = () => {
           <Additional>
             <p>Additional information</p>
             <AdditionalNav>
-              <Reviews>
+              <Reviews type="button">
                 <StyledList
                   to="reviews"
                   state={{ from: location?.state?.from ?? '/' }}
@@ -68,7 +68,7 @@ const MovieDetailsPage = () => {
                   Reviews
                 </StyledList>
               </Reviews>
-              <Cast>
+              <Cast type="button">
                 <StyledList
                   to="cast"
                   state={{ from: location?.state?.from ?? '/' }}

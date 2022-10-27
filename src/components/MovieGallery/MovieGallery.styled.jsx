@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 export const MoviesList = styled.ul`
   display: grid;
+  max-width: calc(100% - 30px);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 16px;
+  margin: 20px auto;
+  padding: 0;
+
+  /* display: grid;
   max-width: calc(100vw - 30px);
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 16px;
@@ -10,7 +17,7 @@ export const MoviesList = styled.ul`
   padding: 0;
   list-style: none;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; */
 `;
 
 export const TitleHeader = styled.h2`
