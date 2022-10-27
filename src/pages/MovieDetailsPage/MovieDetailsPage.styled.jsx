@@ -1,24 +1,36 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
-export const BackLink = styled.button`
-  background-color: #efefef;
-  padding: 5px;
+export const BackLink = styled(Link)`
+  display: block;
   margin-top: 20px;
+  padding: 5px;
   width: 200px;
   border: solid 1px gray;
+  border-radius: 5px;
+  background-color: #efefef;
+  text-align: center;
+  color: #3b3be3;
 `;
 
 export const StyledList = styled(NavLink)`
-  color: black;
+  background-color: #efefef;
+  width: 200px;
+  padding: 5px;
+  margin-right: 5px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  text-align: center;
+  color: #3b3be3;
 
   &.active {
-    color: #3876fc;
+    background-color: #3876fc;
+    color: white;
   }
 
   :hover:not(.active),
   :focus-visible:host(.active) {
-    color: #3b3be3;
+    color: #3876fc;
   }
 `;
 export const Additional = styled.div`
@@ -29,16 +41,7 @@ export const Additional = styled.div`
 export const AdditionalNav = styled.div`
   display: flex;
 `;
-export const Reviews = styled.button`
-  background-color: #efefef;
-  width: 200px;
-  padding: 5px;
-  margin-right: 5px;
-  border: solid 1px gray;
-`;
-export const Cast = styled.button`
-  background-color: #efefef;
-  width: 200px;
-  padding: 5px;
-  border: solid 1px gray;
-`;
+
+// export const BackLink = styled(Link)`
+//   ${buttonStyles}
+// `;

@@ -10,8 +10,6 @@ import {
   BackLink,
   Additional,
   AdditionalNav,
-  Reviews,
-  Cast,
 } from './MovieDetailsPage.styled';
 
 const MovieDetailsPage = () => {
@@ -52,30 +50,25 @@ const MovieDetailsPage = () => {
       )}
       {status === Status.RESOLVED && movie && (
         <>
-          <BackLink type="button">
-            <StyledList to={'/'}>Go back</StyledList>
-          </BackLink>
+          <BackLink to={'/'}>Go back</BackLink>
 
           <MovieDetailsCard movie={movie} />
           <Additional>
             <p>Additional information</p>
             <AdditionalNav>
-              <Reviews type="button">
-                <StyledList
-                  to="reviews"
-                  state={{ from: location?.state?.from ?? '/' }}
-                >
-                  Reviews
-                </StyledList>
-              </Reviews>
-              <Cast type="button">
-                <StyledList
-                  to="cast"
-                  state={{ from: location?.state?.from ?? '/' }}
-                >
-                  Cast
-                </StyledList>
-              </Cast>
+              <StyledList
+                to="reviews"
+                state={{ from: location?.state?.from ?? '/' }}
+              >
+                Reviews
+              </StyledList>
+
+              <StyledList
+                to="cast"
+                state={{ from: location?.state?.from ?? '/' }}
+              >
+                Cast
+              </StyledList>
             </AdditionalNav>
           </Additional>
 
