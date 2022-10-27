@@ -46,7 +46,7 @@ const Home = () => {
       {status === Status.REJECTED && (
         <div style={{ color: 'red' }}>{error}</div>
       )}
-      {status === Status.RESOLVED && movies && (
+      {status === Status.RESOLVED && (
         <MovieGallery
           movies={movies}
           titleHeader={'Trending today:'}

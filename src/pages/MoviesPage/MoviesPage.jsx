@@ -27,6 +27,7 @@ const Movies = () => {
       return;
     }
     async function searchMovies() {
+      setStatus(Status.PENDING);
       try {
         const fetchSearchMovies = await getSearchMovie(searchQuery, page);
 
@@ -35,6 +36,7 @@ const Movies = () => {
           toast.error(
             'Sorry, there are no images matching your search query. Please try again.'
           );
+          return;
         }
 
         setMovies(prevState => [...prevState, ...fetchSearchMovies.results]);
@@ -68,10 +70,10 @@ const Movies = () => {
       {status === Status.REJECTED && (
         <div style={{ color: 'red' }}>{error}</div>
       )}
-      {status === Status.RESOLVED && (
+      {status === Status.RESOLVED && movies && (
         <MovieGallery
           movies={movies}
-          titleHeader={'Searching results:'}
+          titleHeader={'Searching results'}
           locationState={location}
         />
       )}
@@ -79,7 +81,7 @@ const Movies = () => {
       {movies.length !== 0 && totalPages !== page && (
         <BtnLoadMore btnLoadMore={loadMore} />
       )}
-      <Toaster position="top-left" />
+      <Toaster position="top-center" />
     </div>
   );
 };
