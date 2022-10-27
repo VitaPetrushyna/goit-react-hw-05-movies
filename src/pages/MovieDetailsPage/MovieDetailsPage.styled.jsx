@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export const BackLink = styled(Link)`
   display: block;
-  margin-top: 20px;
+
   padding: 5px;
   width: 200px;
   border: solid 1px gray;
@@ -11,6 +11,10 @@ export const BackLink = styled(Link)`
   background-color: #efefef;
   text-align: center;
   color: #3b3be3;
+`;
+
+export const WrapperLink = styled.div`
+  margin-top: 20px;
 `;
 
 export const StyledList = styled(NavLink)`

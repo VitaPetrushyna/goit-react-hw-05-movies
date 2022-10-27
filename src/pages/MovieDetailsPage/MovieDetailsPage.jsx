@@ -10,6 +10,7 @@ import {
   BackLink,
   Additional,
   AdditionalNav,
+  WrapperLink,
 } from './MovieDetailsPage.styled';
 
 const MovieDetailsPage = () => {
@@ -19,7 +20,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  // const backLinkHref = location?.state?.from ?? '/';
+  const cameBack = location?.state?.from ?? '/';
 
   useEffect(() => {
     async function searchDetailsMovies() {
@@ -50,22 +51,19 @@ const MovieDetailsPage = () => {
       )}
       {status === Status.RESOLVED && movie && (
         <>
-          <BackLink to={'/'}>Go back</BackLink>
+          <WrapperLink>
+            <BackLink to={cameBack}>Go back</BackLink>
+          </WrapperLink>
+
           <MovieDetailsCard movie={movie} />
           <Additional>
             <p>Additional information</p>
             <AdditionalNav>
-              <StyledList
-                to="reviews"
-                state={{ from: location?.state?.from ?? '/' }}
-              >
+              <StyledList to="reviews" state={{ from: cameBack }}>
                 Reviews
               </StyledList>
 
-              <StyledList
-                to="cast"
-                state={{ from: location?.state?.from ?? '/' }}
-              >
+              <StyledList to="cast" state={{ from: cameBack }}>
                 Cast
               </StyledList>
             </AdditionalNav>
@@ -74,7 +72,7 @@ const MovieDetailsPage = () => {
           <Suspense fallback="">
             <Outlet />
           </Suspense>
-          <Toaster position="top-left" />
+          <Toaster position="top-center" />
         </>
       )}
     </div>

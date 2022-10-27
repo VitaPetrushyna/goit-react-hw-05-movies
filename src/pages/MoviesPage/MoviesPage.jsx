@@ -10,7 +10,6 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Movies = () => {
   const [page, setPage] = useState(1);
-  // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
@@ -22,12 +21,11 @@ const Movies = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // setStatus(Status.IDLE);
     if (!searchQuery) {
       return;
     }
     async function searchMovies() {
-      setStatus(Status.PENDING);
+      // setStatus(Status.PENDING);
       try {
         const fetchSearchMovies = await getSearchMovie(searchQuery, page);
 
@@ -51,10 +49,16 @@ const Movies = () => {
   }, [searchQuery, page]);
 
   const handleSubmit = query => {
-    // if (!query.trim()) {
-    //   setMovies(null);
-    //   toast.info('Please, enter search query.');
-    // }
+    if (query !== searchQuery) {
+      setPage(1);
+      setSearchParams(query);
+      setMovies([]);
+    } else {
+      toast('What to show you?', {
+        icon: '👏',
+      });
+    }
+
     setSearchParams({ query });
   };
 
