@@ -49,7 +49,7 @@ const Home = () => {
       {status === Status.RESOLVED && (
         <MovieGallery
           movies={movies}
-          titleHeader={'Trending today:'}
+          titleHeader={'Trending today'}
           locationState={location}
         />
       )}
