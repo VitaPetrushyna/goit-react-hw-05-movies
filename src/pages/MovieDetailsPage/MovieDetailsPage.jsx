@@ -20,7 +20,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  const cameBack = location?.state?.from ?? '/';
+  const cameBack = location.state?.from ?? '/';
 
   useEffect(() => {
     async function searchDetailsMovies() {

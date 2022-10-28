@@ -4,10 +4,10 @@ import fallback from '../../images/fallback.jpg';
 import { Link } from 'react-router-dom';
 import { ImageMovie, InfoMovie, CardMovie } from './MovieGalleryItem.styled';
 
-export const MovieGalleryItem = (
-  { movie: { id, poster_path, title, overview } },
-  locationState
-) => {
+export const MovieGalleryItem = ({
+  movie: { id, poster_path, title, overview },
+  locationState,
+}) => {
   return (
     <Link to={`/movies/${id}`} state={{ from: locationState }}>
       <CardMovie data-id={id}>
