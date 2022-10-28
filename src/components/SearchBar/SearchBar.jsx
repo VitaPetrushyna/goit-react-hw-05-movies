@@ -7,8 +7,8 @@ import {
   SearchFormInput,
 } from './SerchBar.styled';
 
-export function Searchbar({ onSubmit }) {
-  const [query, setQuery] = useState('');
+export function Searchbar({ onSubmit, newQuery }) {
+  const [query, setQuery] = useState(newQuery ?? '');
 
   const handleInputChange = event => {
     setQuery(event.currentTarget.value);
@@ -47,4 +47,5 @@ export function Searchbar({ onSubmit }) {
 
 Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  newQuery: PropTypes.string.isRequired,
 };

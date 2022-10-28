@@ -79,6 +79,7 @@ const Movies = () => {
           movies={movies}
           titleHeader={'Searching results'}
           locationState={location}
+          newQuery={searchQuery}
         />
       )}
 
